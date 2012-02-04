@@ -1,0 +1,7 @@
+.idea
+out
+target
+*.iml
+griffon-i18n-support-*.zip
+plugin.xml
+.svn

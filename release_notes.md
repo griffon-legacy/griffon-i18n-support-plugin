@@ -1,35 +1,3 @@
-class I18nSupportGriffonPlugin {
-    // the plugin version
-    String version = '0.1-SNAPSHOT'
-    // the version or versions of Griffon the plugin is designed for
-    String griffonVersion = '0.9.5-SNAPSHOT > *'
-    // the other plugins this plugin depends on
-    Map dependsOn = [:]
-    // resources that are included in plugin packaging
-    List pluginIncludes = []
-    // the plugin license
-    String license = 'Apache Software License 2.0'
-    // Toolkit compatibility. No value means compatible with all
-    // Valid values are: swing, javafx, swt, pivot, gtk
-    List toolkits = []
-    // Platform compatibility. No value means compatible with all
-    // Valid values are:
-    // linux, linux64, windows, windows64, macosx, macosx64, solaris
-    List platforms = []
-    // URL where documentation can be found
-    String documentation = 'http://griffon.codehaus.org/I18n+Support+Plugin'
-    // URL where source can be found
-    String source = 'https://github.com/griffon/griffon-i18n-support-plugin'
-
-    List authors = [
-        [
-            name: 'Alexander Klein',
-            email: 'info@aklein.org'
-        ]
-    ]
-    String title = 'Plugin for basic i18n-support. Multiple implementations will depend on this plugin.'
-    // accepts Markdown syntax. See http://daringfireball.net/projects/markdown/ for details
-    String description = '''
 **i18n-support** provides basic internationalization support.
 
 Other plugin can provide different implementations of this functionality. <br/>
@@ -58,7 +26,7 @@ The template will be interpreted as a GString where *#* is treated as *$* <br/>
 So the following will be valid:
 - `#0` or `#{0}` will be replaced by the args-entry at index *0*, if it is a List or an Array, or the args-entry with the key *_0* in a Map
 - `#a` or `#{a}` will be replaced by the args-entry the args-entry with the key *a* in a Map
-- `\\#a` will result in *#a*
+- `\#a` will result in *#a*
 - `#{date.format('yyyy/MM/dd')}` will result in a formatted String of the date `date` provided by a Map argument
 
 Additionally, on any artifact or the app-instance, you can get hold off the MessageSource instance with `messageSource` or `i18n`.
@@ -67,5 +35,9 @@ Configuration
 -------------
     i18n.basename = 'messages'
     i18n.provider = 'i18n-support'
-'''
-}
+
+History
+-------
+- 0.1 <br/>
+  Initial creation
+

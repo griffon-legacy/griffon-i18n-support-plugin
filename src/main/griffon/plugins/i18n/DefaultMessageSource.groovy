@@ -46,21 +46,17 @@ class DefaultMessageSource implements ExtendedMessageSource, ConstrainedMessageS
     }
 
     String getMessage(String key, Map<String, ?> args, Locale locale = Locale.getDefault()) throws NoSuchMessageException {
-        try {
-            def message = getMessage(key)
-            if (args != null)
-                message = fillIn(message, args)
-            return message
-        } catch (MissingResourceException e) {
-            throw new NoSuchMessageException(key, locale)
-        }
+        def message = getMessage(key, locale)
+        if (args != null)
+            message = fillIn(message, args)
+        return message
     }
 
     String getMessage(String key, String defaultMessage, Locale locale = Locale.getDefault()) {
         def message
         try {
-            message = getMessage(key)
-        } catch (MissingResourceException e) {
+            message = getMessage(key, locale)
+        } catch (NoSuchMessageException e) {
             message = defaultMessage
         }
         return message
@@ -82,7 +78,7 @@ class DefaultMessageSource implements ExtendedMessageSource, ConstrainedMessageS
     }
 
     MessageSource getMessageSource(Object constraint) throws ConstraintNotSupportedException {
-        if(!(constraint instanceof String))
+        if (!(constraint instanceof String))
             throw new ConstraintNotSupportedException(this, constraint);
         return new DefaultMessageSource((String) constraint, loader, control)
     }
@@ -113,7 +109,7 @@ class DefaultMessageSource implements ExtendedMessageSource, ConstrainedMessageS
         if (args instanceof Collection) {
             args.each { arg ->
                 if (arg instanceof Map) {
-                    data.putAll(arg)       T
+                    data.putAll(arg) T
                 } else if (arg instanceof Collection || arg instanceof Object[]) {
                     arg.each { a ->
                         data.put("_$idx".toString(), a)

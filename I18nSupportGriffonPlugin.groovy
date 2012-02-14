@@ -1,6 +1,6 @@
 class I18nSupportGriffonPlugin {
     // the plugin version
-    String version = '0.1-SNAPSHOT'
+    String version = '0.1'
     // the version or versions of Griffon the plugin is designed for
     String griffonVersion = '0.9.5-SNAPSHOT > *'
     // the other plugins this plugin depends on

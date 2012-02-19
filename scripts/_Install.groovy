@@ -23,8 +23,8 @@
 // """)
 // }
 
-File configFile = new File(basedir, 'griffon-app/conf/Config.groovy')
-ConfigObject config = configSlurper.parse(configFile.text)
+def configFile = new File(basedir, 'griffon-app/conf/Config.groovy')
+def config = configFile.text
 
-if (!config.i18n.provider) configFile.append '''\ni18n.provider = 'i18n-support' \n'''
-if (!config.i18n.basename) configFile.append '''i18n.basename = 'messages' \n'''
+if (!config.contains('i18n.provider')) configFile.append '''\ni18n.provider = 'i18n-support' \n'''
+if (!config.contains('i18n.basename')) configFile.append '''i18n.basename = 'messages' \n'''

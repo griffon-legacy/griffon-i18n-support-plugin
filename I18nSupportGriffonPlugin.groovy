@@ -2,7 +2,7 @@ class I18nSupportGriffonPlugin {
     // the plugin version
     String version = '0.1'
     // the version or versions of Griffon the plugin is designed for
-    String griffonVersion = '0.9.5-SNAPSHOT > *'
+    String griffonVersion = '0.9.5-rc2 > *'
     // the other plugins this plugin depends on
     Map dependsOn = [:]
     // resources that are included in plugin packaging
@@ -67,5 +67,35 @@ Configuration
 -------------
     i18n.basename = 'messages'
     i18n.provider = 'i18n-support'
+
+Examples
+--------
+message.properties:
+
+    // Should work on all implementations
+    key.static = This is just a text
+    key.dynamic.byIndex = The key {0} has the value {1}
+    key.dynamic.byKey = The key {key} has the value {value}
+    // Works on this implementation
+    key.dynamic.byIndex.impl = The key #0 has the value #{1}
+    key.dynamic.byKey.impl = The key #key has the value #{value}
+    key.dynamic.fancy.impl = \\#key = #{value*10}
+
+message_de.properties:
+
+    key.static = Dies ist nur ein Text
+
+Your code in an english environment (Default Locale):
+
+    assert 'This is just a text' == getMessage('key.static')
+    assert 'Test' == getMessage('key.not.existing', 'Test')
+    assert 'Dies ist nur ein Text' == getMessage('key.static', Locale.GERMAN)
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex', ['X', 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex', [_0: 'X', _1: 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byKey', [key: 'X', value: 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex.impl', ['X', 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex.impl', [_0: 'X', _1: 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byKey.impl', [key: 'X', value: 100])
+    assert '#key = 1000' == getMessage('key.dynamic.fancy.impl', [key: 'X', value: 100])
 '''
 }

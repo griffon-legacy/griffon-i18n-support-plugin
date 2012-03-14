@@ -38,6 +38,35 @@ Configuration
 
 History
 -------
-- 0.1 <br/>
-  Initial creation
+| Version | Notes            |
+| 0.1     | Initial creation |
 
+Examples
+--------
+message.properties:
+
+    // Should work on all implementations
+    key.static = This is just a text
+    key.dynamic.byIndex = The key {0} has the value {1}
+    key.dynamic.byKey = The key {key} has the value {value}
+    // Works on this implementation
+    key.dynamic.byIndex.impl = The key #0 has the value #{1}
+    key.dynamic.byKey.impl = The key #key has the value #{value}
+    key.dynamic.fancy.impl = \#key = #{value*10}
+
+message_de.properties:
+
+    key.static = Dies ist nur ein Text
+
+Your code in an english environment (Default Locale):
+
+    assert 'This is just a text' == getMessage('key.static')
+    assert 'Test' == getMessage('key.not.existing', 'Test')
+    assert 'Dies ist nur ein Text' == getMessage('key.static', Locale.GERMAN)
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex', ['X', 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex', [_0: 'X', _1: 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byKey', [key: 'X', value: 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex.impl', ['X', 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byIndex.impl', [_0: 'X', _1: 100])
+    assert 'The key X has the value 100' == getMessage('key.dynamic.byKey.impl', [key: 'X', value: 100])
+    assert '#key = 1000' == getMessage('key.dynamic.fancy.impl', [key: 'X', value: 100])

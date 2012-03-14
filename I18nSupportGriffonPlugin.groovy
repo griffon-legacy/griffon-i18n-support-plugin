@@ -17,7 +17,7 @@ class I18nSupportGriffonPlugin {
     // linux, linux64, windows, windows64, macosx, macosx64, solaris
     List platforms = []
     // URL where documentation can be found
-    String documentation = 'http://griffon.codehaus.org/I18n+Support+Plugin'
+    String documentation = ''
     // URL where source can be found
     String source = 'https://github.com/griffon/griffon-i18n-support-plugin'
 

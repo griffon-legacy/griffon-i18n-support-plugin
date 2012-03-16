@@ -41,11 +41,11 @@ class DefaultMessageSource implements ExtendedMessageSource, ConstrainedMessageS
         getMessage(key, createMapFromArguments(args), locale)
     }
 
-    String getMessage(String key, List<?> args, Locale locale = Locale.getDefault()) throws NoSuchMessageException {
+    String getMessage(String key, List<Object> args, Locale locale = Locale.getDefault()) throws NoSuchMessageException {
         getMessage(key, createMapFromArguments(args), locale)
     }
 
-    String getMessage(String key, Map<String, ?> args, Locale locale = Locale.getDefault()) throws NoSuchMessageException {
+    String getMessage(String key, Map<String, Object> args, Locale locale = Locale.getDefault()) throws NoSuchMessageException {
         def message = getMessage(key, locale)
         if (args != null)
             message = fillIn(message, args)
@@ -66,11 +66,11 @@ class DefaultMessageSource implements ExtendedMessageSource, ConstrainedMessageS
         getMessage(key, createMapFromArguments(args), defaultMessage, locale)
     }
 
-    String getMessage(String key, List<?> args, String defaultMessage, Locale locale = Locale.getDefault()) {
+    String getMessage(String key, List<Object> args, String defaultMessage, Locale locale = Locale.getDefault()) {
         getMessage(key, createMapFromArguments(args), defaultMessage, locale)
     }
 
-    String getMessage(String key, Map<String, ?> args, String defaultMessage, Locale locale = Locale.getDefault()) {
+    String getMessage(String key, Map<String, Object> args, String defaultMessage, Locale locale = Locale.getDefault()) {
         def message = getMessage(key, defaultMessage, locale)
         if (args != null)
             message = fillIn(message, args)

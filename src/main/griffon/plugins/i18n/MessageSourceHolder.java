@@ -22,15 +22,25 @@ import java.util.Map;
 /**
  * @author Alexander Klein
  */
-public final class MessageSourceHolder {
-    private static Map<String, MessageSource> messageSources = new HashMap<String, MessageSource>();
-    private static String provider;
+public final class MessageSourceHolder implements MessageSourceProvider {
+    private Map<String, MessageSource> messageSources = new HashMap<String, MessageSource>();
+    private String provider;
+    
+    private static MessageSourceHolder INSTANCE;
+    
+    static {
+        INSTANCE = new MessageSourceHolder();
+    }
+    
+    public static MessageSourceHolder getInstance() {
+        return INSTANCE;
+    }
 
-    public static MessageSource getMessageSource() {
+    public MessageSource getMessageSource() {
         return getMessageSource(getProvider());
     }
 
-    public static MessageSource getMessageSource(Object constraint) {
+    public MessageSource getMessageSource(Object constraint) {
         MessageSource messageSource = getMessageSource();
         try {
             if (messageSource instanceof ConstrainedMessageSource)
@@ -42,23 +52,23 @@ public final class MessageSourceHolder {
         }
     }
 
-    public static String getProvider() {
+    public String getProvider() {
         return provider;
     }
 
-    public static void setProvider(String provider) {
-        MessageSourceHolder.provider = provider;
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
     
-    public static void registerMessageSource(String provider, MessageSource messageSource) {
+    public void registerMessageSource(String provider, MessageSource messageSource) {
         messageSources.put(provider, messageSource);
     }
 
-    public static void unregisterMessageSource(String provider) {
+    public void unregisterMessageSource(String provider) {
         messageSources.remove(provider);
     }
 
-    public static MessageSource getMessageSource(String provider) {
+    public MessageSource getMessageSource(String provider) {
         return messageSources.get(provider);
     }
 }

@@ -16,4 +16,6 @@
 //     builderConfigFile.text -= configText
 // }
 File configFile = new File(basedir, 'griffon-app/conf/Config.groovy')
-configFile.text = configFile.text - "i18n.provider = 'i18n-support'"
+if(configFile.exists()) {
+    configFile.text = configFile.text - "i18n.provider = 'i18n-support'"
+}

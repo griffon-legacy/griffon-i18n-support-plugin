@@ -28,10 +28,6 @@ final class I18nEnhancer {
     
     static void enhance(MetaClass mc, MessageSourceProvider provider = MessageSourceHolder.instance) {
         if(LOG.debugEnabled) LOG.debug("Enhancing $mc with $provider")
-
-        mc.messageSource = provider.messageSource
-        mc.i18n          = provider.messageSource
-
         mc.getMessage = {String key ->
             provider.messageSource.getMessage(key)   
         }

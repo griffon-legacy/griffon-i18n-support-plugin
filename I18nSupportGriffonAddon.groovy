@@ -31,6 +31,9 @@ class I18nSupportGriffonAddon {
         String basename = app.config.i18n?.basename ?: DEFAULT_I18N_FILE
         MessageSourceHolder.instance.provider = app.config.i18n?.provider ?: DEFAULT_PROVIDER
         MessageSourceHolder.instance.registerMessageSource(DEFAULT_PROVIDER, new DefaultMessageSource(basename))
+
+        app.metaClass.messageSource = MessageSourceHolder.instance.messageSource
+        app.metaClass.i18n          = MessageSourceHolder.instance.messageSource
     }
 
     void addonPostInit(GriffonApplication app) {

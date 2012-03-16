@@ -25,11 +25,11 @@
 
 def configFile = new File(basedir, 'griffon-app/conf/Config.groovy')
 if(configFile.exists()) {
-    def config = configFile.text
-    if (!config.contains('i18n.provider')) {
+    def configText = configFile.text
+    if (!configText.contains('i18n.provider')) {
         configFile.append '''\ni18n.provider = 'i18n-support'\n'''
     } else {
-        configFile.text.replaceAll(/i18n.provider = '(.*)'/, "i18n.provider = 'i18n-support'")
+        configFile.text = configText.replaceAll(/i18n.provider = '(.*)'/, "i18n.provider = 'i18n-support'")
     }
-    if (!config.contains('i18n.basename')) configFile.append '''i18n.basename = 'messages'\n'''
+    if (!configText.contains('i18n.basename')) configFile.append '''i18n.basename = 'messages'\n'''
 }

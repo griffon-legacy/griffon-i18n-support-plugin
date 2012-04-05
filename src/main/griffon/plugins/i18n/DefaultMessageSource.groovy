@@ -41,7 +41,7 @@ class DefaultMessageSource implements ExtendedMessageSource, ConstrainedMessageS
         getMessage(key, createMapFromArguments(args), locale)
     }
 
-    String getMessage(String key, List<Object> args, Locale locale = Locale.getDefault()) throws NoSuchMessageException {
+    String getMessage(String key, List args, Locale locale = Locale.getDefault()) throws NoSuchMessageException {
         getMessage(key, createMapFromArguments(args), locale)
     }
 
@@ -66,7 +66,7 @@ class DefaultMessageSource implements ExtendedMessageSource, ConstrainedMessageS
         getMessage(key, createMapFromArguments(args), defaultMessage, locale)
     }
 
-    String getMessage(String key, List<Object> args, String defaultMessage, Locale locale = Locale.getDefault()) {
+    String getMessage(String key, List args, String defaultMessage, Locale locale = Locale.getDefault()) {
         getMessage(key, createMapFromArguments(args), defaultMessage, locale)
     }
 

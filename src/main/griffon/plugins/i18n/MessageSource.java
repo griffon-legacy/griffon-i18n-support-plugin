@@ -73,7 +73,7 @@ public interface MessageSource {
      * @return The resolved message at the given key for the default locale
      * @throws NoSuchMessageException if no message is found
      */
-    String getMessage(String key, List<Object> args) throws NoSuchMessageException;
+    String getMessage(String key, List args) throws NoSuchMessageException;
 
     /**
      * Try to resolve the message.
@@ -84,7 +84,7 @@ public interface MessageSource {
      * @return The resolved message at the given key for the given locale
      * @throws NoSuchMessageException if no message is found
      */
-    String getMessage(String key, List<Object> args, Locale locale) throws NoSuchMessageException;
+    String getMessage(String key, List args, Locale locale) throws NoSuchMessageException;
 
     /**
      * Try to resolve the message.
@@ -134,7 +134,7 @@ public interface MessageSource {
      * @param defaultMessage Message to return if the lookup fails
      * @return The resolved message at the given key for the default locale
      */
-    String getMessage(String key, List<Object> args, String defaultMessage);
+    String getMessage(String key, List args, String defaultMessage);
 
     /**
      * Try to resolve the message.
@@ -145,5 +145,5 @@ public interface MessageSource {
      * @param locale         Locale in which to lookup
      * @return The resolved message at the given key for the given locale
      */
-    String getMessage(String key, List<Object> args, String defaultMessage, Locale locale);
+    String getMessage(String key, List args, String defaultMessage, Locale locale);
 }

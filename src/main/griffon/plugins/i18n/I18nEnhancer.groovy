@@ -40,10 +40,10 @@ final class I18nEnhancer {
         mc.getMessage << {String key, Object[] args, Locale locale ->
             provider.messageSource.getMessage(key, args, locale)   
         }
-        mc.getMessage << {String key, List<Object> args ->
+        mc.getMessage << {String key, List args ->
             provider.messageSource.getMessage(key, args)   
         }
-        mc.getMessage << {String key, List<Object> args, Locale locale ->
+        mc.getMessage << {String key, List args, Locale locale ->
             provider.messageSource.getMessage(key, args, locale)   
         }
         mc.getMessage << {String key, String defaultMessage ->
@@ -58,10 +58,10 @@ final class I18nEnhancer {
         mc.getMessage << {String key, Object[] args, String defaultMessage, Locale locale ->
             provider.messageSource.getMessage(key, args, defaultMessage, locale)   
         }
-        mc.getMessage << {String key, List<Object> args, String defaultMessage ->
+        mc.getMessage << {String key, List args, String defaultMessage ->
             provider.messageSource.getMessage(key, args, defaultMessage)   
         }
-        mc.getMessage << {String key, List<Object> args, String defaultMessage, Locale locale ->
+        mc.getMessage << {String key, List args, String defaultMessage, Locale locale ->
             provider.messageSource.getMessage(key, args, defaultMessage, locale)   
         }
         

@@ -5,3 +5,4 @@ target
 griffon-i18n-support-*.zip
 plugin.xml
 .svn
+release_notes.md

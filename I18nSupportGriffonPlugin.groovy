@@ -1,8 +1,8 @@
 class I18nSupportGriffonPlugin {
     // the plugin version
-    String version = '0.2'
+    String version = '0.2.1'
     // the version or versions of Griffon the plugin is designed for
-    String griffonVersion = '0.9.5 > *'
+    String griffonVersion = '* < 1.1.0'
     // the other plugins this plugin depends on
     Map dependsOn = [:]
     // resources that are included in plugin packaging
@@ -35,6 +35,11 @@ class I18nSupportGriffonPlugin {
     // accepts Markdown syntax. See http://daringfireball.net/projects/markdown/ for details
     String description = '''
 Provides basic internationalization support.
+
+ __WARNING__
+
+    This plugin is no longer supported since Griffon 1.1.0.
+    It's usage is highly discouraged and should be uninstalled from *every* application.
 
 Other plugin can provide different implementations of this functionality. <br/>
 The used implementation can be configured with the configuration key `i18n.provider`. <br/>

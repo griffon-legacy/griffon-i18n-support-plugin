@@ -38,8 +38,9 @@ Provides basic internationalization support.
 
  __WARNING__
 
-    This plugin is no longer supported since Griffon 1.1.0.
-    It's usage is highly discouraged and should be uninstalled from *every* application.
+   _This plugin is no longer supported since Griffon 1.1.0.
+   It's usage is highly discouraged and should be uninstalled from *every* application.
+   See the [Internationalization][1] chapter of the Griffon Guide for more information_
 
 Other plugin can provide different implementations of this functionality. <br/>
 The used implementation can be configured with the configuration key `i18n.provider`. <br/>
@@ -172,5 +173,7 @@ This implementation may be used in the following way
             // exercise service methods
         }
     }
+
+[1]: http://griffon.codehaus.org/guide/latest/guide/internationalization.html
 '''
 }
